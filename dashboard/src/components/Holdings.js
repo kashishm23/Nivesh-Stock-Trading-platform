@@ -1,6 +1,5 @@
 import React, {useState,useEffect} from "react";
 import axios from "axios";
-import { holdings } from "../data/data";
 import { VerticalGraph } from "./VerticalGraph";
 
 const Holdings = () => {
