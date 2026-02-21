@@ -7,7 +7,7 @@ const Holdings = () => {
   const [allHoldings,setAllHoldings]=useState([]);  
   
   useEffect(()=>{ 
-axios.get("http://localhost:3002/allHoldings").then((res)=>{
+axios.get(`${process.env.REACT_APP_API_URL}/allHoldings`).then((res)=>{
 setAllHoldings(res.data);
 })
   },[]);
@@ -48,7 +48,7 @@ setAllHoldings(res.data);
       const curValue = stock.price * stock.qty;
       const isProfit = curValue - stock.avg * stock.qty >= 0.0;
       const profClass = isProfit ? "profit" : "loss";
-      const dayClass = stock.isLoss ? "loss" : "profit";
+    const dayClass = stock.day.includes("-") ? "loss" : "profit";
 
       return (
         <tr key={index}>

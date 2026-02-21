@@ -17,7 +17,7 @@ const SignUp = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/auth/signup",
+        `${process.env.REACT_APP_API_URL}/auth/signup`,
         { email, password, username },
         { withCredentials: true }
       );
