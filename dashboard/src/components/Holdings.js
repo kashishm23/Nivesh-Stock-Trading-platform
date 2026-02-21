@@ -5,12 +5,17 @@ import { VerticalGraph } from "./VerticalGraph";
 const Holdings = () => {
   const [allHoldings,setAllHoldings]=useState([]);  
   
-  useEffect(()=>{ 
-axios.get(`${process.env.REACT_APP_API_URL}/allHoldings`).then((res)=>{
-setAllHoldings(res.data);
-})
-  },[]);
-
+ useEffect(() => {
+  axios
+    .get("https://nivesh-stock-trading-platform.onrender.com/allHoldings")
+    .then((res) => {
+      console.log(res.data);  
+      setAllHoldings(res.data);
+    })
+    .catch((err) => {
+      console.log("Error fetching holdings:", err);
+    });
+}, []);
   const labels=allHoldings.map((subArray)=>subArray["name"]);
   const data={
     labels,

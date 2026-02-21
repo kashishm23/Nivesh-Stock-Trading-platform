@@ -6,7 +6,7 @@ const Orders = () => {
   const [allOrders, setAllOrders] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/allOrders`)
+    axios.get("https://nivesh-stock-trading-platform.onrender.com/allOrders")
       .then((res) => {
         setAllOrders(res.data);
       })

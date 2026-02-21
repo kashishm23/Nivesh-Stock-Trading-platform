@@ -5,7 +5,7 @@ const Positions = () => {
   const [allPositions,setAllPositions]=useState([]);  
   
   useEffect(()=>{ 
-axios.get(`${process.env.REACT_APP_API_URL}/allPositions`).then((res)=>{
+axios.get("https://nivesh-stock-trading-platform.onrender.com/allPositions").then((res)=>{
 setAllPositions(res.data);
 })
   },[]);
@@ -15,6 +15,7 @@ setAllPositions(res.data);
 
       <div className="order-table">
         <table>
+          <thead>
           <tr>
             <th>Product</th>
             <th>Instrument</th>
@@ -24,7 +25,8 @@ setAllPositions(res.data);
             <th>P&L</th>
             <th>Chg.</th>
           </tr>
-
+          </thead>
+<tbody>
           {allPositions.map((stock, index) => {
             const curValue = stock.price * stock.qty;
             const isProfit = curValue - stock.avg * stock.qty >= 0.0;
@@ -45,6 +47,7 @@ setAllPositions(res.data);
               </tr>
             );
           })}
+          </tbody>
         </table>
       </div>
     </>
